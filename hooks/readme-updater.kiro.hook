@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Opdater README ved kodeændringer",
+  "description": "Når en kode-fil gemmes, tjekker Kiro om README.md er opdateret",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["**/*.py", "**/*.js", "**/*.html"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "En kodefil er blevet ændret. Tjek om projektets README.md stadig er korrekt — særligt: beskrivelse af hvad prototypen gør, køreinstruktioner, og eventuelle nye afhængigheder. Opdater README.md hvis noget er forældet. Skriv på dansk, uden teknisk jargon."
+  }
+}
