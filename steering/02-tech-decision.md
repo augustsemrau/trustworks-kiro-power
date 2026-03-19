@@ -2,130 +2,130 @@
 inclusion: always
 ---
 
-# Teknologivalg — Beslutningstræ
+# Technology Choices — Decision Tree
 
-Brugeren skal **aldrig** vælge teknologi selv. Du vælger baseret på disse kriterier. Det afgørende spørgsmål er altid:
+The user **never** chooses technology. You choose based on the criteria below. The governing question is always:
 
-> **Kan brugeren køre, teste og dele dette med nul konti, nul abonnementer og nul serveropsætning?**
+> **Can this person run, test, and share this with zero accounts, zero subscriptions, and zero server setup?**
 
 ---
 
-## Beslutningstræ
+## Decision tree
 
-### Bruges det primært på en telefon?
+### Is it primarily used on a phone?
 
 **→ Progressive Web App (PWA)**
 
-En PWA er en hjemmeside der opfører sig som en app på telefonen. Brugeren åbner den i sin browser og kan tilføje den til sin startskærm — præcis som en rigtig app. Den virker offline, gemmer data lokalt, og kræver ingen App Store, ingen Google Play, ingen udviklerkonto.
+A PWA is a website that behaves like an app on a phone. The user opens it in their browser and can add it to their home screen — exactly like a real app. It works offline, stores data locally, and requires no App Store, no Google Play, no developer account.
 
-**Teknisk stack:**
-- Rent HTML, CSS og JavaScript — ingen frameworks, ingen build-trin
-- Data gemmes i `localStorage` (indbygget i alle mobilbrowsere)
-- Kører fra en simpel lokal server: `python3 -m http.server 8080`
-- Deles ved at køre serveren og åbne IP-adressen på telefonen, ELLER via GitHub Pages (gratis hosting)
+**Tech stack:**
+- Plain HTML, CSS, and JavaScript — no frameworks, no build step
+- Data stored in `localStorage` (built into all mobile browsers)
+- Run locally with: `python3 -m http.server 8080`
+- Share by running the server and opening the IP address on the phone, OR via GitHub Pages (free hosting)
 
-**Typiske eksempler:**
-- Kørselsregistrering til skat (Dittes mands app)
-- Tidsregistrering på farten
-- Simpel tjekliste eller logbog
-- Udgiftsregistrering
+**Typical examples:**
+- Work mileage log for tax deduction
+- Time tracking on the go
+- Simple checklist or logbook
+- Expense registration
 
-**PWA-krav du altid inkluderer:**
+**PWA requirements — always include:**
 ```
-manifest.json        ← gør den installerbar på telefonen
-service-worker.js    ← gør den offline-kapabel
-index.html           ← hoved-applikationen
-style.css            ← mobilvenligt design (touch-targets, stor tekst)
-app.js               ← logik og datahåndtering
+manifest.json        ← makes it installable on the phone
+service-worker.js    ← makes it work offline
+index.html           ← the main application
+style.css            ← mobile-friendly design (touch targets, large text)
+app.js               ← logic and data handling
 ```
 
-Manifestet skal altid have: `name`, `short_name`, `display: standalone`, `start_url`, `icons` (brug emoji-baserede SVG-ikoner så der ikke kræves billedfiler).
+The manifest must always include: `name`, `short_name`, `display: standalone`, `start_url`, `icons` (use inline SVG-based icons — no image files needed).
 
-Design altid mobile-first: store knapper (min. 48px touch target), tydelig kontrast, simpelt layout. Test ved at åbne på telefon.
+Always design mobile-first: large buttons (min. 48px touch target), clear contrast, simple layout. Test by opening on a real phone.
 
 ---
 
-### Bruges det på én computer — kun af brugeren selv?
+### Is it used on one computer — by the user alone?
 
 **→ Python + Streamlit**
 
-Kører lokalt, åbner automatisk i browser, ingen installation udover Python.
+Runs locally, opens automatically in the browser, no installation beyond Python.
 
-**Teknisk stack:**
+**Tech stack:**
 - Python 3.10+
-- Streamlit til UI
-- SQLite til data (lokal fil, ingen server)
+- Streamlit for UI
+- SQLite for data (local file, no server)
 - `pip install -r requirements.txt` + `streamlit run app.py`
 
-**Projektstruktur:**
+**Project structure:**
 ```
-projekt/
+project/
 ├── app.py
-├── requirements.txt    ← med pinnede versioner (fx streamlit==1.45.1)
+├── requirements.txt    ← with pinned versions (e.g. streamlit==1.45.1)
 ├── data/
-└── README.md           ← dansk, uden jargon
+└── README.md           ← plain language, no jargon
 ```
 
 ---
 
-### Bruges det af et lille team (2-10 personer) på samme netværk?
+### Is it used by a small team (2–10 people) on the same network?
 
-**→ Python + Streamlit med netværksdeling**
+**→ Python + Streamlit with network sharing**
 
-Samme stack som ovenfor. Streamlit kan køres så det er tilgængeligt på lokalnetværket:
+Same stack as above. Streamlit can be run so it is accessible on the local network:
 
 ```bash
 streamlit run app.py --server.address 0.0.0.0
 ```
 
-Andre på samme WiFi kan tilgå det via computerens IP-adresse. Ingen server eller cloud nødvendigt.
+Others on the same WiFi can access it via the computer's IP address. No server or cloud required.
 
 ---
 
-### Er det ren databehandling — ingen brugergrænseflade?
+### Is it pure data processing — no user interface?
 
-**→ Python-script**
+**→ Python script**
 
-Simpelt script der læser inputfiler (CSV, Excel) og skriver outputfiler.
+A simple script that reads input files (CSV, Excel) and writes output files.
 
-**Teknisk stack:**
+**Tech stack:**
 - Python 3.10+
-- pandas eller polars til databehandling
-- openpyxl til Excel-filer
-- Kører med: `python process.py`
+- pandas or polars for data processing
+- openpyxl for Excel files
+- Run with: `python process.py`
 
-Inkluder altid en kort beskrivelse øverst i scriptet om hvad det gør og hvilke filer det forventer.
-
----
-
-### Er det en simpel informationsside eller opslagstavle?
-
-**→ Statisk HTML**
-
-En enkelt HTML-fil der kan åbnes direkte i en browser. Ingen server nødvendig.
-
-Kan deles ved at sende filen, eller hostes gratis på GitHub Pages.
+Always include a short comment at the top of the script describing what it does and what files it expects.
 
 ---
 
-## Hvad du aldrig vælger (og hvorfor)
+### Is it a simple information page or noticeboard?
 
-| Teknologi | Hvorfor ikke |
+**→ Static HTML**
+
+A single HTML file that can be opened directly in a browser. No server needed.
+
+Can be shared by sending the file, or hosted for free on GitHub Pages.
+
+---
+
+## What you never choose (and why)
+
+| Technology | Why not |
 |---|---|
-| React / Vue / Angular | Kræver Node.js, npm, build-pipeline — for komplekst at sætte op |
-| React Native / Flutter | Kræver Xcode, Android Studio, app store-konto |
-| Django / FastAPI med database | Kræver server, deployment, vedligeholdelse |
-| Firebase / Supabase / AWS | Kræver konto, kreditkort, cloud-konfiguration |
-| Docker | Kræver teknisk opsætning, ikke egnet til prototyper |
-| Electron | Tung, kompleks, overkill til prototyper |
+| React / Vue / Angular | Requires Node.js, npm, build pipeline — too complex to set up |
+| React Native / Flutter | Requires Xcode, Android Studio, app store account |
+| Django / FastAPI with a database server | Requires server, deployment, ongoing maintenance |
+| Firebase / Supabase / AWS | Requires account, credit card, cloud configuration |
+| Docker | Requires technical setup, not appropriate for prototypes |
+| Electron | Heavy, complex, overkill for prototypes |
 
-**Undtagelse:** Hvis en teknisk kollega er med i samtalen og eksplicit beder om en af ovenstående, følg deres anvisning.
+**Exception:** If a technical colleague is in the conversation and explicitly requests one of the above, follow their guidance.
 
 ---
 
-## Virtual environment — altid til Python-projekter
+## Virtual environment — always for Python projects
 
-Inkluder altid disse instruktioner i README.md for Python-projekter:
+Always include these instructions in README.md for Python projects:
 
 ```bash
 python3 -m venv venv
@@ -134,13 +134,13 @@ venv\Scripts\activate          # Windows
 pip install -r requirements.txt
 ```
 
-Pin altid versioner i requirements.txt. Brug `pip freeze > requirements.txt` efter installation.
+Always pin versions in requirements.txt. Use `pip freeze > requirements.txt` after installation.
 
 ---
 
-## Fejlhåndtering i prototyper
+## Error handling in prototypes
 
-- Wrap filoperationer og databehandling i `try/except`
-- Vis fejl på dansk med `st.error()` (Streamlit) eller `alert()` / synlig tekst (PWA)
-- Lad aldrig prototypen crashe med en uforståelig fejl
-- Simple, forståelige fejlmeddelelser er bedre end avanceret fejlhåndtering
+- Wrap file operations and data processing in `try/except`
+- Show errors in plain language using `st.error()` (Streamlit) or visible text / `alert()` (PWA)
+- Never let a prototype crash with an unreadable Python traceback
+- Simple, understandable error messages are better than sophisticated error handling

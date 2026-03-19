@@ -1,60 +1,60 @@
 ---
 inclusion: auto
 name: handoff-protocol
-description: Brug når brugeren nærmer sig grænserne for hvad der kan bygges uden en udvikler, eller spørger om næste skridt
+description: Use when the user is approaching the limits of what can be built without a developer, or asks about next steps beyond the prototype
 ---
 
-# Overdragelsesprotokol
+# Handoff Protocol
 
-## Signaler på at en teknisk kollega bør involveres
+## Signals that a technical colleague should be involved
 
-**Tekniske grænser:**
-- Integration med eksisterende systemer (SAP, Dynamics 365, SharePoint, interne API'er)
-- Data skal deles på tværs af enheder eller brugere i realtid
-- Mange samtidige brugere (mere end et lille team)
-- Data kræver særlig sikkerhed eller GDPR-behandling
-- Deployment til rigtig server eller cloud
-- Automatisk kørsel uden brugerinteraktion (schedulerede jobs)
-- Login og adgangskontrol
+**Technical limits:**
+- Integration with existing systems (SAP, Dynamics 365, SharePoint, internal APIs)
+- Data needs to be shared across devices or users in real time
+- Many concurrent users (more than a small team)
+- Data requires special security handling or GDPR compliance
+- Deployment to a real server or cloud environment
+- Automated execution without user interaction (scheduled jobs)
+- User login and access control
 
-**Kompleksitetssignaler:**
-- Brugeren har bedt om det samme ændret tre eller flere gange uden tilfredsstillende resultat
-- Opgaven kræver forståelse af eksisterende kodebase eller systemer
-- Prototypen skal erstatte et produktionssystem
+**Complexity signals:**
+- The user has asked for the same change three or more times without a satisfactory result
+- The task requires understanding of an existing codebase or system
+- The prototype is meant to replace a production system
 
-## Hvad du siger
+## What you say
 
-> *"Det vi er nået til nu kræver hjælp fra en teknisk kollega — ikke fordi idéen er dårlig, men fordi [konkret årsag på dansk]. Jeg laver en opsummering til dig nu, som du kan sende videre."*
+> *"What we've reached now requires help from a technical colleague — not because the idea is wrong, but because [specific plain-language reason]. I'll write a summary for you now that you can pass on."*
 
-## Overdragelsesdokument (gem som HANDOFF.md)
+## Handoff document (save as HANDOFF.md)
 
 ```markdown
-# Prototype-overdragelse: [Projektets navn]
+# Prototype Handoff: [Project name]
 
-## Hvad er bygget
-[2-3 sætninger — hvad gør prototypen, hvad er ikke implementeret]
+## What was built
+[2–3 sentences — what the prototype does, what is not yet implemented]
 
-## Hvad brugeren vil opnå
-[Det forretningsmæssige mål, ikke det tekniske]
+## What the user wants to achieve
+[The business goal, not the technical one]
 
-## Teknisk tilstand
-- Teknologi: [PWA / Streamlit / Python-script]
-- Koden ligger i: [mappenavn]
-- Start med: [kommando]
-- Pakker: se requirements.txt (hvis relevant)
+## Technical state
+- Technology: [PWA / Streamlit / Python script]
+- Code is in: [folder name]
+- Start with: [command]
+- Packages: see requirements.txt (if applicable)
 
-## Datamodel
-[Beskriv hvad der gemmes, hvordan og hvor]
+## Data model
+[Describe what is stored, how, and where]
 
-## Hvad der mangler
-[Prioriteret liste over næste skridt der kræver teknisk arbejde]
+## What is missing / next steps
+[Prioritised list of what requires technical work]
 
-## Spørgsmål til den tekniske kollega
-[2-4 specifikke spørgsmål]
+## Questions for the technical colleague
+[2–4 specific questions to help move forward]
 ```
 
-## Hvad du ikke gør
+## What you never do
 
-- Forsøg ikke at implementere cloud-integrationer for at undgå overdragelsen
-- Sig aldrig "det kan ikke lade sig gøre" — sig "det kræver en teknisk kollega"
-- Vent ikke til brugeren selv beder om hjælp — vær proaktiv
+- Do not attempt to implement cloud integrations to avoid the handoff
+- Never say "that can't be done" — say "that requires a technical colleague"
+- Do not wait for the user to ask for help — be proactive when you see the signals

@@ -1,74 +1,74 @@
 # trustworks-kiro-power
 
-Et Kiro Power der hjælper Trustworks-medarbejdere med at bygge fungerende prototyper ud fra idéer — uden teknisk erfaring.
+A Kiro Power that helps Trustworks employees build working prototypes from ideas — no technical experience required.
 
-## Installation (for brugere)
+## Installation (for users)
 
-1. Åbn Kiro
-2. Find **"Powers"** i venstre panel
-3. Klik **"Add power from GitHub"**
-4. Indsæt: `github.com/trustworks/trustworks-kiro-power`
-5. Klik **Install**
+1. Open Kiro
+2. Find **"Powers"** in the left panel
+3. Click **"Add power from GitHub"**
+4. Paste: `github.com/trustworks/trustworks-kiro-power`
+5. Click **Install**
 
-Det er alt. Næste gang du åbner et projekt og beskriver din idé, aktiverer poweret automatisk.
-
----
-
-## Hvad poweret gør
-
-Når du nævner ord som "idé", "prototype", "bygge", "app", "automatisere", "telefon" eller "dashboard", aktiverer Kiro automatisk Trustworks-konteksten og guider dig gennem processen.
-
-**Poweret styrer:**
-- Hvordan Kiro interviewer dig om din idé
-- Hvilken teknologi Kiro vælger (uden at spørge dig)
-- Hvornår Kiro anbefaler at involvere en udvikler
-- Hvad der sker hvis du vil bygge en mobilapp (PWA i stedet for React Native)
+That's it. The next time you open a project and describe your idea, the power activates automatically.
 
 ---
 
-## Indhold
+## What the power does
+
+When you mention words like "idea", "prototype", "build", "app", "automate", "phone", "dashboard", or "report" — or their Danish equivalents — Kiro automatically loads the Trustworks context and guides you through the process.
+
+**The power controls:**
+- How Kiro interviews you about your idea
+- Which technology Kiro chooses (without asking you)
+- When Kiro recommends involving a developer
+- What happens if you want to build a mobile app (PWA instead of React Native)
+
+---
+
+## Contents
 
 ```
 trustworks-kiro-power/
-├── POWER.md                      ← Entry point — onboarding og keyword-triggers
-├── mcp.json                      ← Context7 til opdateret dokumentation
+├── POWER.md                      ← Entry point — onboarding and keyword triggers
+├── mcp.json                      ← Context7 for up-to-date documentation
 ├── hooks/
-│   └── readme-updater.kiro.hook  ← Holder README opdateret automatisk
+│   └── readme-updater.kiro.hook  ← Keeps README accurate automatically
 └── steering/
-    ├── 00-trustworks.md          ← Hvem er Trustworks og brugerne
-    ├── 01-interaction.md         ← Interaktionsstil og tone
-    ├── 02-tech-decision.md       ← Beslutningstræ for teknologivalg
-    ├── 03-pwa-patterns.md        ← Mønstre til mobilapps (auto-indlæst)
-    ├── 04-handoff.md             ← Overdragelse til teknisk kollega (auto-indlæst)
-    └── 05-prototype-review.md    ← Gennemgang af færdig prototype (/prototype-review)
+    ├── 00-trustworks.md          ← Who Trustworks is and who the users are
+    ├── 01-interaction.md         ← Interaction style and tone
+    ├── 02-tech-decision.md       ← Decision tree for technology choices
+    ├── 03-pwa-patterns.md        ← Patterns for mobile apps (auto-loaded)
+    ├── 04-handoff.md             ← Handoff to technical colleague (auto-loaded)
+    └── 05-prototype-review.md    ← Prototype review (/prototype-review)
 ```
 
 ---
 
-## Vedligeholdelse (for IT-teamet)
+## Maintenance (for the IT team)
 
-**Opdater steering-filer** ved at redigere `.md`-filerne og pushe til main. Brugere får opdateringen næste gang de bruger Kiro — ingen geninstallation nødvendig.
+**Update steering files** by editing the `.md` files and pushing to main. Users get the update next time they use Kiro — no reinstallation needed.
 
-**Tilføj en ny teknologi-type:** Rediger `steering/02-tech-decision.md` og tilføj en ny sektion i beslutningstræet.
+**Add a new technology type:** Edit `steering/02-tech-decision.md` and add a new branch to the decision tree.
 
-**Tilføj et nyt use case-specifikt mønster** (som `03-pwa-patterns.md`): Opret en ny `.md`-fil i `steering/` med `inclusion: auto` og en god `description` — Kiro indlæser den automatisk når det er relevant.
+**Add a new use-case pattern** (like `03-pwa-patterns.md`): Create a new `.md` file in `steering/` with `inclusion: auto` and a clear `description` — Kiro will load it automatically when relevant.
 
-**Test af ændringer:** Klon repo'et lokalt, åbn mappen i Kiro, og test med en ny samtale.
+**Test changes:** Clone the repo locally, open the folder in Kiro, and test with a new conversation.
 
 ---
 
-## Teknologier poweret kender til
+## Technology choices the power makes
 
-| Scenarie | Valg |
+| Scenario | Choice |
 |---|---|
-| Mobilapp (iPhone/Android) | Progressive Web App |
-| Intern desktop-app | Python + Streamlit |
-| Team-deling på lokalnetværk | Streamlit med `--server.address 0.0.0.0` |
-| Databehandling / Excel-automatisering | Python-script |
-| Simpel informationsside | Statisk HTML |
+| Mobile app (iPhone/Android) | Progressive Web App |
+| Internal desktop tool | Python + Streamlit |
+| Team sharing on local network | Streamlit with `--server.address 0.0.0.0` |
+| Data processing / Excel automation | Python script |
+| Simple information page | Static HTML |
 
-Poweret vælger **aldrig** React, React Native, Flutter, Firebase, Docker eller andre teknologier der kræver cloud-konti eller kompleks opsætning.
+The power **never** chooses React, React Native, Flutter, Firebase, Docker, or any technology requiring cloud accounts or complex setup.
 
 ---
 
-*Vedligeholdes af Trustworks IT-teamet*
+*Maintained by the Trustworks IT team*

@@ -1,7 +1,7 @@
 {
   "enabled": true,
-  "name": "Opdater README ved kodeændringer",
-  "description": "Når en kode-fil gemmes, tjekker Kiro om README.md er opdateret",
+  "name": "Update README on code changes",
+  "description": "When a code file is saved, Kiro checks whether README.md is still accurate and updates it if needed",
   "version": "1",
   "when": {
     "type": "fileEdited",
@@ -9,6 +9,6 @@
   },
   "then": {
     "type": "askAgent",
-    "prompt": "En kodefil er blevet ændret. Tjek om projektets README.md stadig er korrekt — særligt: beskrivelse af hvad prototypen gør, køreinstruktioner, og eventuelle nye afhængigheder. Opdater README.md hvis noget er forældet. Skriv på dansk, uden teknisk jargon."
+    "prompt": "A code file was just changed. Check whether the project's README.md is still accurate — particularly: the description of what the prototype does, the run instructions, and any new dependencies. Update README.md if anything is outdated. Write in plain language without technical jargon."
   }
 }

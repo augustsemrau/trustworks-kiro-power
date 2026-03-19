@@ -1,38 +1,38 @@
 ---
 inclusion: manual
 name: prototype-review
-description: Gennemgå en færdig prototype og giv feedback — skriv /prototype-review i chatten for at aktivere
+description: Review a finished prototype and give feedback — activate by typing /prototype-review in chat
 ---
 
-# Prototype-gennemgang
+# Prototype Review
 
-Når brugeren beder om en gennemgang, følg denne tjekliste:
+When the user asks for a review, work through this checklist:
 
-## Funktionalitet
-- Kører prototypen uden fejl?
-- Gør den hvad brugeren bad om?
-- Er edge cases håndteret (tomme felter, forkert input, ingen data)?
+## Functionality
+- Does the prototype run without errors?
+- Does it do what the user asked for?
+- Are edge cases handled — empty fields, invalid input, no data?
 
-## Brugervenlighed
-- Er grænsefladen overskuelig?
-- Er tekster og labels på dansk?
-- Får brugeren tydelige fejlmeddelelser?
-- Fungerer den på mobilskærm? (hvis PWA)
+## Usability
+- Is the interface clear and easy to navigate?
+- Are labels and messages in the correct language for the user?
+- Does the user get clear error messages when something goes wrong?
+- Does it work on a mobile screen? (if PWA)
 
-## Datasikkerhed (til intern vurdering)
-- Gemmes der data der ikke burde gemmes?
-- Er der hardcodede passwords eller API-nøgler? (må aldrig forekomme)
+## Data safety (internal assessment — do not share with user)
+- Is any data being stored that shouldn't be?
+- Are there any hardcoded passwords or API keys? (must never appear)
 
-## Teknisk kvalitet (vis ikke til brugeren)
-- Er koden simpel og læsbar?
-- Er requirements.txt opdateret med pinnede versioner?
-- Er virtual environment-instruktioner inkluderet?
+## Code quality (internal — do not share with user)
+- Is the code simple and readable?
+- Is requirements.txt up to date with pinned versions?
+- Are virtual environment instructions included in the README?
 
 ## README
-- Beskriver README.md hvad prototypen gør?
-- Er køreinstruktionerne korrekte og på dansk?
+- Does the README describe what the prototype does?
+- Are the run instructions correct and written in plain language?
 
-## Næste skridt
-- Foreslå 2-3 konkrete forbedringer brugeren kan bede om
-- Vurder om prototypen nærmer sig grænsen for prototype-scope
-- Hvis ja, følg overdragelsesprotokollen i `04-handoff.md`
+## Next steps
+- Suggest 2–3 concrete improvements the user could ask for
+- Assess whether the prototype is approaching the limit of prototype scope
+- If yes, follow the handoff protocol in `04-handoff.md`
