@@ -25,10 +25,9 @@ A PWA is a website that behaves like an app on a phone. The user opens it in the
 - Share by running the server and opening the IP address on the phone, OR via GitHub Pages (free hosting)
 
 **Typical examples:**
-- Work mileage log for tax deduction
-- Time tracking on the go
-- Simple checklist or logbook
-- Expense registration
+- Logging or tracking something on the go
+- Simple checklist, logbook, or registration form
+- A tool that needs to work offline
 
 **PWA requirements — always include:**
 ```
@@ -135,6 +134,17 @@ pip install -r requirements.txt
 ```
 
 Always pin versions in requirements.txt. Use `pip freeze > requirements.txt` after installation.
+
+---
+
+## Python availability
+
+Before choosing a Python-based path, check whether Python is installed by running `python3 --version`. If it is not available:
+
+- **Mac:** Recommend installing via [python.org](https://www.python.org/downloads/) — the official installer requires no technical knowledge.
+- **Windows:** Recommend installing from the Microsoft Store (search "Python 3") — one click, no configuration.
+
+Guide the user through this step by step if needed. Do not assume Python is already present.
 
 ---
 

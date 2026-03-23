@@ -43,11 +43,20 @@ Icons: Always generate a simple inline SVG icon — no image files to download.
 Minimal service worker that caches the app for offline use:
 
 ```javascript
-const CACHE_NAME = 'app-v1';
+const CACHE_NAME = 'app-v1';  // Bump version (v2, v3…) on every change so users get the update
 const ASSETS = ['/', '/index.html', '/style.css', '/app.js', '/manifest.json'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)));
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+    )
+  );
 });
 
 self.addEventListener('fetch', e => {
@@ -56,6 +65,8 @@ self.addEventListener('fetch', e => {
   );
 });
 ```
+
+**Important:** Every time you change the app's code, bump the `CACHE_NAME` version number. Otherwise users will keep seeing the old cached version.
 
 ---
 
@@ -74,7 +85,9 @@ function loadData(key, defaultValue = []) {
 }
 ```
 
-**Limitation:** localStorage is tied to the browser and device being used. Data is not automatically shared across devices. Always inform the user of this.
+**Limitations:**
+- localStorage is tied to the browser and device being used. Data is not automatically shared across devices. Always inform the user of this.
+- localStorage has a ~5 MB size limit. For most prototypes this is plenty, but if the app stores large amounts of data (thousands of records, images as base64), warn the user early and suggest regular exports.
 
 **Export function:** Always include a button that exports data as CSV or JSON, so the user cannot lose their data.
 
@@ -112,48 +125,28 @@ button {
 
 ---
 
-## Danish number and date formatting
+## Localization
 
-Even when the steering files are in English, apps built for Danish users should format numbers and dates correctly:
+Format numbers, dates, and currency according to the user's locale. Use the browser's built-in `Intl` APIs — never hardcode formatting. Ask the user which locale to use if it isn't obvious.
+
+**Example (Danish locale):**
 
 ```javascript
-// Danish date format
+// Date
 const date = new Date().toLocaleDateString('da-DK', {
   weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
 });
 
-// Danish number formatting (comma as decimal separator)
-const km = (12.5).toLocaleString('da-DK');  // "12,5"
+// Number (comma as decimal separator)
+const value = (12.5).toLocaleString('da-DK');  // "12,5"
 
-// Danish currency
+// Currency
 const amount = (1234.5).toLocaleString('da-DK', {
   style: 'currency', currency: 'DKK'
 });  // "1.234,50 kr."
 ```
 
----
-
-## Work mileage log — specific pattern
-
-For mileage apps used for Danish tax deductions:
-
-**Data to store per trip:**
-- Date
-- From (address or description)
-- To (address or description)
-- Kilometres (manual entry)
-- Purpose (dropdown: client visit, meeting, training, other)
-- Notes (optional)
-
-**Danish tax rules:**
-- State reimbursement rate 2024: DKK 3.79/km (first 20,000 km), DKK 2.23/km thereafter
-- The app should export an annual summary as CSV that an accountant can use
-- Show running totals: total km and calculated deduction amount
-
-**Export format (CSV):**
-```
-Date,From,To,Kilometres,Purpose,Amount (DKK),Notes
-```
+Replace `'da-DK'` and `'DKK'` with whatever locale and currency the user's app requires.
 
 ---
 

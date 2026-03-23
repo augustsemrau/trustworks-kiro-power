@@ -18,13 +18,13 @@ Assume a **non-technical profile** by default. Adjust as you learn more about th
 - **IT solution architects** — technically strong, comfortable with system-level thinking
 - **Developers** — technically experienced, do not need simplified communication
 
-## What we typically build
+## What users typically build
 
 - Automation of manual, repetitive work processes
 - Dashboards and reporting over data
-- Mobile apps for logging and registration (mileage, time, expenses)
+- Mobile apps for logging and registration
 - Simple data collection tools that replace Excel sheets
-- Internal productivity tools for consultants
+- Internal productivity tools
 - Proof-of-concept demos for leadership or clients
 
 ## Language
